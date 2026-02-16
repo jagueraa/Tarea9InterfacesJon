@@ -1,191 +1,222 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Formulario de contacto</title>
-  <style>
-    :root{
-      color-scheme: light;
-      --text:#111;
-      --bg:#fff;
-      --border:#444;
-      --focus:#0b5fff;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulario de contacto</title>
+    <link rel="icon" href="data:," />
 
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      line-height:1.5;
-      color:var(--text);
-      background:var(--bg);
-    }
+    <style>
+      :root {
+        color-scheme: light;
+        --text: #111;
+        --bg: #fff;
+        --border: #444;
+        --focus: #0b5fff;
+      }
 
-    header, main, footer{
-      padding:1.25rem;
-      max-width:48rem;
-      margin-inline:auto;
-    }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          Arial,
+          sans-serif;
+        line-height: 1.5;
+        color: var(--text);
+        background: var(--bg);
+      }
 
-    .skip-link{
-      position:absolute;
-      left:-9999px;
-      top:0.5rem;
-      padding:0.6rem 0.8rem;
-      background:var(--bg);
-      color:var(--text);
-      border:2px solid var(--border);
-      border-radius:0.5rem;
-      z-index:1000;
-    }
-    .skip-link:focus,
-    .skip-link:focus-visible{
-      left:0.5rem;
-      outline:3px solid var(--focus);
-      outline-offset:2px;
-    }
+      header,
+      main,
+      footer {
+        padding: 1.25rem;
+        max-width: 48rem;
+        margin-inline: auto;
+      }
 
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible{
-      outline:3px solid var(--focus);
-      outline-offset:2px;
-    }
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0.5rem;
+        padding: 0.6rem 0.8rem;
+        background: var(--bg);
+        color: var(--text);
+        border: 2px solid var(--border);
+        border-radius: 0.5rem;
+        z-index: 1000;
+      }
+      .skip-link:focus,
+      .skip-link:focus-visible {
+        left: 0.5rem;
+        outline: 3px solid var(--focus);
+        outline-offset: 2px;
+      }
 
-    nav a{
-      display:inline-block;
-      padding:0.5rem 0.75rem;
-      border-radius:0.5rem;
-      color:inherit;
-    }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 2px;
+      }
 
-    form{
-      margin-top:1rem;
-      padding:1rem;
-      border:1px solid var(--border);
-      border-radius:0.75rem;
-    }
+      nav a {
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        color: inherit;
+      }
 
-    .field{ margin-bottom:0.9rem; }
+      form {
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+      }
 
-    label{
-      display:block;
-      font-weight:600;
-      margin-bottom:0.25rem;
-    }
+      .field {
+        margin-bottom: 0.9rem;
+      }
 
-    input[type="text"],
-    input[type="email"]{
-      width:100%;
-      max-width:24rem;
-      padding:0.55rem 0.65rem;
-      border:1px solid var(--border);
-      border-radius:0.5rem;
-      font:inherit;
-    }
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
 
-    button{
-      appearance:none;
-      border:1px solid var(--border);
-      background:#f2f2f2;
-      color:var(--text);
-      padding:0.65rem 1rem;
-      border-radius:0.5rem;
-      font:inherit;
-      cursor:pointer;
-    }
-    button:hover{ background:#e9e9e9; }
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        max-width: 24rem;
+        padding: 0.55rem 0.65rem;
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        font: inherit;
+      }
 
-    .helper{
-      margin:0.2rem 0 0;
-      font-size:0.95rem;
-      color:#333;
-    }
+      button {
+        appearance: none;
+        border: 1px solid var(--border);
+        background: #f2f2f2;
+        color: var(--text);
+        padding: 0.65rem 1rem;
+        border-radius: 0.5rem;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #e9e9e9;
+      }
 
-    figure{ margin:1rem 0 0; }
+      .helper {
+        margin: 0.2rem 0 0;
+        font-size: 0.95rem;
+        color: #333;
+      }
 
-    img{
-      max-width:100%;
-      height:auto;
-      border:1px solid #bbb;
-      border-radius:0.5rem;
-    }
+      figure {
+        margin: 1rem 0 0;
+      }
 
-    #estado{
-      margin-top:0.75rem;
-      font-weight:600;
-    }
+      img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #bbb;
+        border-radius: 0.5rem;
+      }
 
-    footer{
-      border-top:1px solid #ccc;
-      color:#333;
-      font-size:0.95rem;
-    }
-  </style>
-</head>
-<body>
-  <!-- Accesskeys: no se han definido para evitar conflictos con atajos del navegador y/o lectores de pantalla. -->
+      #estado {
+        margin-top: 0.75rem;
+        font-weight: 600;
+      }
 
-  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+      footer {
+        border-top: 1px solid #ccc;
+        color: #333;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Accesskeys: no se han definido para evitar conflictos con atajos del navegador y/o lectores de pantalla. -->
 
-  <header>
-    <h1>Formulario de contacto</h1>
-    <nav aria-label="Navegación principal">
-      <a href="#contacto">Ir al formulario de contacto</a>
-    </nav>
-  </header>
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
-  <main id="contenido">
-    <section id="contacto" aria-labelledby="titulo-contacto">
-      <h2 id="titulo-contacto">Contacto</h2>
+    <header>
+      <h1>Formulario de contacto</h1>
+      <nav aria-label="Navegación principal">
+        <a href="#contacto">Ir al formulario de contacto</a>
+      </nav>
+    </header>
 
-      <form action="#" method="post" aria-describedby="ayuda-formulario">
-        <p id="ayuda-formulario" class="helper">
-          Puedes completar tu nombre y tu correo electrónico antes de enviar.
-        </p>
+    <main id="contenido">
+      <section id="contacto" aria-labelledby="titulo-contacto">
+        <h2 id="titulo-contacto">Contacto</h2>
 
-        <div class="field">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej. Ana García">
-        </div>
+        <form action="#" method="post" aria-describedby="ayuda-formulario">
+          <p id="ayuda-formulario" class="helper">
+            Puedes completar tu nombre y tu correo electrónico antes de enviar.
+          </p>
 
-        <div class="field">
-          <label for="email">Correo electrónico</label>
-          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@ejemplo.com">
-        </div>
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input
+              id="nombre"
+              name="nombre"
+              type="text"
+              autocomplete="name"
+              placeholder="Ej. Ana García"
+            />
+          </div>
 
-        <button type="button" id="btn-enviar">Enviar</button>
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="nombre@ejemplo.com"
+            />
+          </div>
 
-        <p id="estado" role="status" aria-atomic="true" hidden></p>
-      </form>
+          <button type="button" id="btn-enviar">Enviar</button>
 
-      <figure>
-        <img src="persona.jpg" alt="Fotografía de una persona">
-        <figcaption class="helper">Imagen relacionada con el contacto.</figcaption>
-      </figure>
-    </section>
-  </main>
+          <p id="estado" role="status" aria-atomic="true" hidden></p>
+        </form>
 
-  <footer>
-    <p>Fin de la página de contacto.</p>
-  </footer>
+        <figure>
+          <img src="persona.jpg" alt="Fotografía de una persona" />
+          <figcaption class="helper">
+            Imagen relacionada con el contacto.
+          </figcaption>
+        </figure>
+      </section>
+    </main>
 
-  <script>
-    (function () {
-      const button = document.getElementById('btn-enviar');
-      const status = document.getElementById('estado');
-      if (!button || !status) return;
+    <footer>
+      <p>Fin de la página de contacto.</p>
+    </footer>
 
-      button.addEventListener('click', function () {
-        const message = 'Enviado';
-        status.textContent = message + '.';
-        status.hidden = false;
-        window.alert(message);
-      });
-    })();
-  </script>
+    <script>
+      (function () {
+        const button = document.getElementById("btn-enviar");
+        const status = document.getElementById("estado");
+        if (!button || !status) return;
 
-  <!--
+        button.addEventListener("click", function () {
+          const message = "Enviado";
+          status.textContent = message + ".";
+          status.hidden = false;
+          window.alert(message);
+        });
+      })();
+    </script>
+
+    <!--
   a) Lista de cambios realizados
   - Añadidos `lang="es"`, `meta viewport` y título más descriptivo.
   - Incluidos landmarks semánticos: `header`, `nav`, `main`, `section` y `footer`.
@@ -208,6 +239,5 @@
   c) Mejoras AAA opcionales aplicadas o pendientes
   - Aplicadas: foco de alto contraste, tipografía legible y tamaño de objetivos cómodo.
   - Pendientes: si el formulario pasa a tener campos obligatorios, añadir validación accesible con mensajes de error inline (y gestión de foco) sin depender de `alert`.
-  -->
-</body>
+  --></body>
 </html>

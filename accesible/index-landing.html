@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landing</title>
+  <style>
+    :root{
+      color-scheme: light;
+      --text:#111;
+      --bg:#fff;
+      --muted:#333;
+      --border:#444;
+      --focus:#0b5fff;
+      --link:#003a8c;
+      --header:#e8e8e8;
+      --hero:#d7d7d7;
+      --card:#ffffff;
+      --card-border:#bdbdbd;
+      --btn-bg:#2b2b2b;
+      --btn-text:#fff;
+    }
+
+    body{
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      margin:0;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.5;
+    }
+
+    header, main, footer{
+      max-width:72rem;
+      margin-inline:auto;
+      padding:1.25rem;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:-9999px;
+      top:0.5rem;
+      padding:0.6rem 0.8rem;
+      background:var(--bg);
+      color:var(--text);
+      border:2px solid var(--border);
+      border-radius:0.5rem;
+      z-index:1000;
+    }
+    .skip-link:focus,
+    .skip-link:focus-visible{
+      left:0.5rem;
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+
+    a{
+      color:var(--link);
+      text-decoration:underline;
+      text-decoration-thickness:2px;
+      text-underline-offset:0.15em;
+    }
+
+    a:focus-visible,
+    button:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+
+    .top{
+      background:var(--header);
+      border-bottom:1px solid #cfcfcf;
+    }
+
+    nav ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.5rem;
+    }
+
+    nav a{
+      display:inline-block;
+      padding:0.55rem 0.8rem;
+      border-radius:0.5rem;
+      min-height:44px;
+      line-height:1.2;
+      color:inherit;
+    }
+
+    .hero{
+      background:var(--hero);
+      border:1px solid #c8c8c8;
+      border-radius:0.75rem;
+      padding:1.25rem;
+      margin-top:1rem;
+    }
+
+    .hero p{
+      margin:0.5rem 0 1rem;
+      color:var(--muted);
+    }
+
+    .btn{
+      appearance:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.5rem;
+      background:var(--btn-bg);
+      color:var(--btn-text);
+      border:2px solid transparent;
+      padding:0.65rem 1rem;
+      border-radius:0.6rem;
+      cursor:pointer;
+      font:inherit;
+      min-height:44px;
+    }
+    .btn:hover{ filter:brightness(1.05); }
+    .btn:active{ filter:brightness(0.98); }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:1rem;
+      padding:0;
+      margin:1.25rem 0 0;
+      list-style:none;
+    }
+
+    .card{
+      border:1px solid var(--card-border);
+      border-radius:0.75rem;
+      padding:1rem;
+      background:var(--card);
+      display:flex;
+      flex-direction:column;
+      gap:0.75rem;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+      border-radius:0.5rem;
+      border:1px solid #d0d0d0;
+    }
+
+    .card h3{
+      margin:0;
+      font-size:1.05rem;
+    }
+
+    .card a{
+      display:inline-block;
+      padding:0.45rem 0.6rem;
+      border-radius:0.5rem;
+      min-height:44px;
+      line-height:1.2;
+      align-self:flex-start;
+    }
+
+    footer{
+      border-top:1px solid #ccc;
+      color:var(--muted);
+      font-size:0.95rem;
+      margin-top:1.5rem;
+    }
+
+    @media (max-width: 56rem){
+      .cards{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 36rem){
+      .cards{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Accesskeys: no se han definido para evitar conflictos con atajos del navegador y/o lectores de pantalla. -->
+
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="top">
+    <h1>Landing</h1>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="#" aria-current="page">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="titulo-bienvenida">
+      <h2 id="titulo-bienvenida">Bienvenido</h2>
+      <p>Texto de prueba para la web.</p>
+      <button class="btn" type="button" id="btn-comprar">Comprar</button>
+      <p id="estado-compra" role="status" aria-atomic="true" hidden></p>
+    </section>
+
+    <section id="servicios" aria-labelledby="titulo-productos">
+      <h2 id="titulo-productos">Productos</h2>
+
+      <ul class="cards">
+        <li class="card">
+          <img src="p1.jpg" alt="Imagen del Producto 1">
+          <h3>Producto 1</h3>
+          <a href="#" aria-label="Más información sobre Producto 1">Más información</a>
+        </li>
+
+        <li class="card">
+          <img src="p2.jpg" alt="Imagen del Producto 2">
+          <h3>Producto 2</h3>
+          <a href="#" aria-label="Más información sobre Producto 2">Más información</a>
+        </li>
+
+        <li class="card">
+          <img src="p3.jpg" alt="Imagen del Producto 3">
+          <h3>Producto 3</h3>
+          <a href="#" aria-label="Más información sobre Producto 3">Más información</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contacto" aria-labelledby="titulo-contacto">
+      <h2 id="titulo-contacto">Contacto</h2>
+      <p class="helper" style="margin:0.5rem 0 0;color:var(--muted);">
+        Para consultas, usa el enlace del apartado de contacto de tu proyecto o añade aquí un formulario.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fin de la página.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const button = document.getElementById('btn-comprar');
+      const status = document.getElementById('estado-compra');
+      if (!button || !status) return;
+
+      button.addEventListener('click', function () {
+        const message = 'Comprar';
+        status.textContent = 'Acción: ' + message + '.';
+        status.hidden = false;
+        window.alert(message);
+      });
+    })();
+  </script>
+
+  <!--
+  a) Lista de cambios realizados
+  - Añadidos `lang="es"` y `meta viewport`.
+  - Incluidos landmarks semánticos: `header`, `nav`, `main`, `section` y `footer`.
+  - Añadido “skip link” al inicio para saltar al contenido principal.
+  - Corregida jerarquía de encabezados: `h1` único y `h2/h3` coherentes (productos como `h3`).
+  - Convertido el `div` clicable “Comprar” a `<button>` accesible por teclado, manteniendo el `alert('Comprar')`.
+  - Añadida región de estado con `role="status"` para feedback accesible sin interrumpir.
+  - Menú convertido a lista dentro de `nav` con `aria-label` y `aria-current="page"` en Inicio.
+  - Tarjetas convertidas a lista (`ul/li`) con estructura semántica y enlaces con nombre accesible descriptivo.
+  - Imágenes con `alt` descriptivo y estilos mínimos de contraste y foco visible.
+  - Ajustada la maquetación para responsive sin romper contenido.
+
+  b) Puntos que deberían mejorar en WAVE/Axe/Lighthouse
+  - Evita avisos por elementos clicables no interactivos (botón real).
+  - Mejor navegación por regiones (landmarks + skip link).
+  - Enlaces con texto/descripción clara (evita “Más” ambiguo).
+  - Foco visible consistente y objetivos táctiles ≥ 44px (WCAG 2.2).
+  - Imágenes con texto alternativo (evita “missing alt”).
+
+  c) Mejoras AAA opcionales aplicadas o pendientes
+  - Aplicadas: enlaces subrayados (no depender solo del color), foco de alto contraste y tamaños de objetivo cómodos.
+  - Pendientes: si se añade formulario de contacto real, incluir validación accesible con mensajes inline y gestión de foco.
+  -->
+</body>
+</html>

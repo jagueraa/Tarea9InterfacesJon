@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listado de usuarios</title>
+  <style>
+    :root{
+      color-scheme: light;
+      --text:#111;
+      --bg:#fff;
+      --muted:#333;
+      --border:#444;
+      --focus:#0b5fff;
+      --link:#003a8c;
+      --thead:#f2f2f2;
+      --row-alt:#fafafa;
+    }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.5;
+      color:var(--text);
+      background:var(--bg);
+    }
+
+    header, main, footer{
+      padding:1.25rem;
+      max-width:56rem;
+      margin-inline:auto;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:-9999px;
+      top:0.5rem;
+      padding:0.6rem 0.8rem;
+      background:var(--bg);
+      color:var(--text);
+      border:2px solid var(--border);
+      border-radius:0.5rem;
+      z-index:1000;
+    }
+    .skip-link:focus,
+    .skip-link:focus-visible{
+      left:0.5rem;
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+
+    a{
+      color:var(--link);
+      text-decoration:underline;
+      text-decoration-thickness:2px;
+      text-underline-offset:0.15em;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+
+    nav a{
+      display:inline-block;
+      padding:0.5rem 0.75rem;
+      border-radius:0.5rem;
+      color:inherit;
+    }
+
+    section{ margin-top:1rem; }
+
+    form{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.75rem;
+      align-items:flex-end;
+      padding:1rem;
+      border:1px solid var(--border);
+      border-radius:0.75rem;
+    }
+
+    label{
+      display:block;
+      font-weight:600;
+      margin-bottom:0.25rem;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:0.25rem;
+      min-width:min(22rem, 100%);
+      flex:1;
+    }
+
+    input[type="search"]{
+      padding:0.55rem 0.65rem;
+      border:1px solid var(--border);
+      border-radius:0.5rem;
+      font:inherit;
+      max-width:32rem;
+    }
+
+    button{
+      appearance:none;
+      border:1px solid var(--border);
+      background:#f2f2f2;
+      color:var(--text);
+      padding:0.65rem 1rem;
+      border-radius:0.5rem;
+      font:inherit;
+      cursor:pointer;
+      min-height:44px;
+    }
+    button:hover{ background:#e9e9e9; }
+
+    .helper{
+      margin:0.25rem 0 0;
+      font-size:0.95rem;
+      color:var(--muted);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:0.75rem;
+      border:1px solid var(--border);
+    }
+
+    caption{
+      text-align:left;
+      font-weight:700;
+      padding:0.75rem 0.75rem 0.25rem;
+    }
+
+    thead th{
+      background:var(--thead);
+      font-weight:700;
+    }
+
+    th, td{
+      border-top:1px solid var(--border);
+      padding:0.6rem 0.75rem;
+      text-align:left;
+      vertical-align:top;
+    }
+
+    tbody tr:nth-child(even){
+      background:var(--row-alt);
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.5rem;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .actions a{
+      display:inline-block;
+      padding:0.35rem 0.5rem;
+      border-radius:0.5rem;
+      min-height:44px;
+      line-height:1.2;
+    }
+
+    footer{
+      border-top:1px solid #ccc;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Accesskeys: no se han definido para evitar conflictos con atajos del navegador y/o lectores de pantalla. -->
+
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <header>
+    <h1>Listado de usuarios</h1>
+    <nav aria-label="Navegación rápida">
+      <a href="#busqueda">Ir a búsqueda</a>
+      <a href="#tabla-usuarios">Ir al listado</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section id="busqueda" aria-labelledby="titulo-busqueda">
+      <h2 id="titulo-busqueda">Buscar usuario</h2>
+
+      <form action="#" method="get" role="search" aria-describedby="ayuda-busqueda">
+        <div class="field">
+          <label for="q">Buscar por nombre o email</label>
+          <input id="q" name="q" type="search" placeholder="Buscar usuario" autocomplete="off">
+          <p id="ayuda-busqueda" class="helper">Escribe un nombre o correo y pulsa “Buscar”.</p>
+        </div>
+
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
+
+    <section id="tabla-usuarios" aria-labelledby="titulo-usuarios">
+      <h2 id="titulo-usuarios">Usuarios</h2>
+
+      <table>
+        <caption>Usuarios disponibles y acciones</caption>
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Ana</th>
+            <td>ana@mail.com</td>
+            <td>
+              <ul class="actions" aria-label="Acciones para Ana">
+                <li><a href="#">Ver Ana</a></li>
+                <li><a href="#">Editar Ana</a></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Pepe</th>
+            <td>pepe@mail.com</td>
+            <td>
+              <ul class="actions" aria-label="Acciones para Pepe">
+                <li><a href="#">Ver Pepe</a></li>
+                <li><a href="#">Editar Pepe</a></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="#">Volver a la página anterior</a></p>
+  </footer>
+
+  <!--
+  a) Lista de cambios realizados
+  - Añadidos `lang="es"` y `meta viewport`.
+  - Añadidos landmarks semánticos: `header`, `nav`, `main`, `section` y `footer`.
+  - Incluido “skip link” para saltar al contenido principal.
+  - Corregida jerarquía de encabezados: `h1` único y `h2` para secciones.
+  - Convertida la búsqueda en un formulario con landmark de búsqueda (`role="search"`), con `label` asociado y texto de ayuda.
+  - Mejorada la tabla con `caption`, `thead`, `tbody` y encabezados con `th` y `scope`.
+  - Enlaces de acciones con texto visible descriptivo (evita “Ver/Editar” ambiguos).
+  - Sustituidos atributos de presentación (border/cellpadding) por CSS, manteniendo un diseño simple.
+  - Añadidos estilos mínimos para foco visible, contraste, legibilidad y tamaño de objetivos.
+
+  b) Puntos que deberían mejorar en WAVE/Axe/Lighthouse
+  - Evita avisos por inputs sin etiqueta (labels correctamente asociadas).
+  - Mejora navegación por regiones (landmarks + skip link).
+  - Mejora semántica de tabla (encabezados y asociación correcta).
+  - Mejora de foco visible y objetivos clicables (WCAG 2.2).
+  - Enlaces con nombre accesible y descriptivo.
+
+  c) Mejoras AAA opcionales aplicadas o pendientes
+  - Aplicadas: enlaces subrayados (no depender solo del color) y alto contraste en texto principal.
+  - Pendientes: si “Buscar” pasa a filtrar dinámicamente, añadir recuento/estado con `aria-live` y gestión de foco al actualizar resultados.
+  -->
+</body>
+</html>

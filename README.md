@@ -30,7 +30,34 @@ Cada archivo cuenta con:
 
 ## 3. Prompt maestro utilizado
 
-(Pegar aquí el prompt final exacto utilizado en Copilot/Codex)
+Eres un asistente experto en Accesibilidad Web (WCAG 2.2, WAI-ARIA) y debes REESCRIBIR el HTML que pego al final para que cumpla WCAG 2.2 nivel AA (y AAA opcional si no rompe nada). El objetivo es que el HTML final no tenga errores críticos en WAVE, Axe y Lighthouse (Accessibility), y que siga buenas prácticas de accesibilidad (semántica + teclado + foco + contraste + formularios + tablas + imágenes + enlaces).
+
+REGLAS OBLIGATORIAS:
+1) Devuelve SOLO el HTML final completo corregido (un único bloque de código). No incluyas explicaciones fuera del HTML.
+2) No elimines contenido ni funcionalidad; adapta y mejora para accesibilidad.
+3) Usa HTML semántico primero. ARIA solo cuando sea necesario y correcto. Evita roles redundantes (no role="button" en <button>, etc.).
+4) Asegura accesibilidad por teclado total: orden lógico, foco visible, sin trampas. Prohibido tabindex positivo.
+5) Si hay elementos clicables que no son interactivos (div/span con onclick), conviértelos a <button> o <a> según corresponda.
+6) Mejora contraste y foco visible añadiendo un <style> mínimo dentro del <head> si hace falta. Mantén diseño simple.
+7) Incluye “skip link” al inicio para saltar al contenido principal.
+8) Añade landmarks: <header>, <nav>, <main>, <footer> cuando proceda.
+9) Corrige jerarquía de encabezados: un <h1> único y h2/h3 coherentes.
+10) Formularios: cada control con <label for>, required si aplica, ayudas con aria-describedby, mensajes con aria-live cuando proceda, autocomplete si aplica.
+11) Imágenes: alt descriptivo si informativas; si decorativas alt="".
+12) Enlaces: texto descriptivo. Evita “click aquí”. Si abren nueva pestaña, indícalo.
+13) Tablas (si existen): <caption>, <thead>, <tbody>, <th scope>, etc.
+14) Añade accesskey SOLO si tiene sentido: máximo 3 y sin conflictos. Documenta en comentario HTML al inicio cuáles son.
+15) Añade atributos ARIA solo si realmente aportan y están bien enlazados (aria-label, aria-labelledby, aria-describedby, aria-expanded, aria-controls, aria-live). No uses aria-hidden en elementos enfocables.
+16) Asegura idioma del documento con lang="es" (salvo que el contenido esté en otro idioma).
+17) Si necesitas JS mínimo para accesibilidad (solo si hay menú desplegable/modal/tabs), inclúyelo dentro de <script> y que gestione aria-* y foco correctamente. Si no hay componente dinámico, no añadas JS.
+
+SALIDA OBLIGATORIA DENTRO DEL HTML:
+- Al final del documento, incluye un bloque de comentarios HTML con:
+  a) Lista de cambios realizados.
+  b) Puntos que deberían mejorar en WAVE/Axe/Lighthouse.
+  c) Mejoras AAA opcionales aplicadas o pendientes.
+
+AHORA MODIFICA ESTE HTML ORIGINAL (pégalo completo a continuación):
 
 El prompt fue diseñado para:
 
@@ -55,7 +82,6 @@ Cada archivo fue procesado mediante una única ejecución del prompt partiendo d
 2. Validación inicial con herramientas especializadas:
    - WAVE
    - Axe DevTools
-   - Lighthouse
 3. Captura de evidencias antes de aplicar mejoras.
 4. Aplicación del prompt maestro en el asistente inteligente.
 5. Generación del código accesible.
@@ -69,7 +95,6 @@ Cada archivo fue procesado mediante una única ejecución del prompt partiendo d
 
 - WAVE (WebAIM)
 - Axe DevTools (extensión de navegador)
-- Lighthouse (integrado en Chrome DevTools)
 
 Estas herramientas permitieron identificar:
 
@@ -142,7 +167,6 @@ El proceso demuestra que los asistentes inteligentes pueden ser utilizados como 
 La práctica confirma la importancia de la validación técnica y la documentación del proceso para garantizar conformidad con los estándares internacionales de accesibilidad.
 
 ---
-
 ## English Version
 
 ### Objective

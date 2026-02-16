@@ -1,26 +1,213 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Formulario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulario de contacto</title>
+  <style>
+    :root{
+      color-scheme: light;
+      --text:#111;
+      --bg:#fff;
+      --border:#444;
+      --focus:#0b5fff;
+    }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.5;
+      color:var(--text);
+      background:var(--bg);
+    }
+
+    header, main, footer{
+      padding:1.25rem;
+      max-width:48rem;
+      margin-inline:auto;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:-9999px;
+      top:0.5rem;
+      padding:0.6rem 0.8rem;
+      background:var(--bg);
+      color:var(--text);
+      border:2px solid var(--border);
+      border-radius:0.5rem;
+      z-index:1000;
+    }
+    .skip-link:focus,
+    .skip-link:focus-visible{
+      left:0.5rem;
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+
+    nav a{
+      display:inline-block;
+      padding:0.5rem 0.75rem;
+      border-radius:0.5rem;
+      color:inherit;
+    }
+
+    form{
+      margin-top:1rem;
+      padding:1rem;
+      border:1px solid var(--border);
+      border-radius:0.75rem;
+    }
+
+    .field{ margin-bottom:0.9rem; }
+
+    label{
+      display:block;
+      font-weight:600;
+      margin-bottom:0.25rem;
+    }
+
+    input[type="text"],
+    input[type="email"]{
+      width:100%;
+      max-width:24rem;
+      padding:0.55rem 0.65rem;
+      border:1px solid var(--border);
+      border-radius:0.5rem;
+      font:inherit;
+    }
+
+    button{
+      appearance:none;
+      border:1px solid var(--border);
+      background:#f2f2f2;
+      color:var(--text);
+      padding:0.65rem 1rem;
+      border-radius:0.5rem;
+      font:inherit;
+      cursor:pointer;
+    }
+    button:hover{ background:#e9e9e9; }
+
+    .helper{
+      margin:0.2rem 0 0;
+      font-size:0.95rem;
+      color:#333;
+    }
+
+    figure{ margin:1rem 0 0; }
+
+    img{
+      max-width:100%;
+      height:auto;
+      border:1px solid #bbb;
+      border-radius:0.5rem;
+    }
+
+    #estado{
+      margin-top:0.75rem;
+      font-weight:600;
+    }
+
+    footer{
+      border-top:1px solid #ccc;
+      color:#333;
+      font-size:0.95rem;
+    }
+  </style>
 </head>
 <body>
+  <!-- Accesskeys: no se han definido para evitar conflictos con atajos del navegador y/o lectores de pantalla. -->
 
-  <div>
-    <h3>Contacto</h3>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
-    <input type="text" placeholder="Nombre">
-    <input type="email" placeholder="Email">
+  <header>
+    <h1>Formulario de contacto</h1>
+    <nav aria-label="Navegación principal">
+      <a href="#contacto">Ir al formulario de contacto</a>
+    </nav>
+  </header>
 
-    <div onclick="alert('Enviado')" style="padding:10px;border:1px solid black;display:inline-block;cursor:pointer;">
-      Enviar
-    </div>
+  <main id="contenido">
+    <section id="contacto" aria-labelledby="titulo-contacto">
+      <h2 id="titulo-contacto">Contacto</h2>
 
-    <img src="persona.jpg">
+      <form action="#" method="post" aria-describedby="ayuda-formulario">
+        <p id="ayuda-formulario" class="helper">
+          Puedes completar tu nombre y tu correo electrónico antes de enviar.
+        </p>
 
-    <a href="#">Click aquí</a>
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej. Ana García">
+        </div>
 
-  </div>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="nombre@ejemplo.com">
+        </div>
 
+        <button type="button" id="btn-enviar">Enviar</button>
+
+        <p id="estado" role="status" aria-atomic="true" hidden></p>
+      </form>
+
+      <figure>
+        <img src="persona.jpg" alt="Fotografía de una persona">
+        <figcaption class="helper">Imagen relacionada con el contacto.</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fin de la página de contacto.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const button = document.getElementById('btn-enviar');
+      const status = document.getElementById('estado');
+      if (!button || !status) return;
+
+      button.addEventListener('click', function () {
+        const message = 'Enviado';
+        status.textContent = message + '.';
+        status.hidden = false;
+        window.alert(message);
+      });
+    })();
+  </script>
+
+  <!--
+  a) Lista de cambios realizados
+  - Añadidos `lang="es"`, `meta viewport` y título más descriptivo.
+  - Incluidos landmarks semánticos: `header`, `nav`, `main`, `section` y `footer`.
+  - Añadido “skip link” para saltar al contenido principal.
+  - Corregida jerarquía de encabezados: `h1` único y `h2` para la sección.
+  - Convertido el `div` clicable a un `<button>` accesible por teclado, manteniendo el `alert('Enviado')`.
+  - Convertidos los campos en un formulario con `<label for>` e identificadores únicos.
+  - Añadidos `name`, `autocomplete` e `inputmode` para mejorar la experiencia.
+  - Añadida región de estado con `role="status"` para feedback accesible.
+  - Añadido `alt` a la imagen y `figcaption` para contexto.
+  - Añadidos estilos mínimos para foco visible, legibilidad y contraste.
+
+  b) Puntos que deberían mejorar en WAVE/Axe/Lighthouse
+  - Labels asociadas correctamente a inputs (evita “missing form label”).
+  - Elemento interactivo correcto (evita “clickable non-interactive element”).
+  - Imagen con texto alternativo (evita “missing alt text”).
+  - Estructura con landmarks (mejora navegación por regiones).
+  - Foco visible y consistente (mejora usabilidad por teclado y auditorías).
+
+  c) Mejoras AAA opcionales aplicadas o pendientes
+  - Aplicadas: foco de alto contraste, tipografía legible y tamaño de objetivos cómodo.
+  - Pendientes: si el formulario pasa a tener campos obligatorios, añadir validación accesible con mensajes de error inline (y gestión de foco) sin depender de `alert`.
+  -->
 </body>
 </html>

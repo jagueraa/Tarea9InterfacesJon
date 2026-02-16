@@ -29,7 +29,7 @@ Cada archivo cuenta con:
 ---
 
 ## 3. Prompt maestro utilizado
-
+```text
 Eres un asistente experto en Accesibilidad Web (WCAG 2.2, WAI-ARIA) y debes REESCRIBIR el HTML que pego al final para que cumpla WCAG 2.2 nivel AA (y AAA opcional si no rompe nada). El objetivo es que el HTML final no tenga errores críticos en WAVE, Axe y Lighthouse (Accessibility), y que siga buenas prácticas de accesibilidad (semántica + teclado + foco + contraste + formularios + tablas + imágenes + enlaces).
 
 REGLAS OBLIGATORIAS:
@@ -41,7 +41,7 @@ REGLAS OBLIGATORIAS:
 6) Mejora contraste y foco visible añadiendo un <style> mínimo dentro del <head> si hace falta. Mantén diseño simple.
 7) Incluye “skip link” al inicio para saltar al contenido principal.
 8) Añade landmarks: <header>, <nav>, <main>, <footer> cuando proceda.
-9) Corrige jerarquía de encabezados: un <h1> único y h2/h3 coherentes.
+9) Corrige jerarquía de encabezados: un h1 único y h2/h3 coherentes.
 10) Formularios: cada control con <label for>, required si aplica, ayudas con aria-describedby, mensajes con aria-live cuando proceda, autocomplete si aplica.
 11) Imágenes: alt descriptivo si informativas; si decorativas alt="".
 12) Enlaces: texto descriptivo. Evita “click aquí”. Si abren nueva pestaña, indícalo.
@@ -58,6 +58,7 @@ SALIDA OBLIGATORIA DENTRO DEL HTML:
   c) Mejoras AAA opcionales aplicadas o pendientes.
 
 AHORA MODIFICA ESTE HTML ORIGINAL (pégalo completo a continuación):
+```
 
 El prompt fue diseñado para:
 
